@@ -18,6 +18,12 @@ const App = () => {
           <p>Christmas mode?</p>
           <FruitList />
         </header>
+
+        <div className="Grid-main">
+          <div>User list to-do</div>
+          <div>Message list to-do</div>
+        </div>
+        <div>Other stuff</div>
       </div>
     </ApolloProvider>
   );
