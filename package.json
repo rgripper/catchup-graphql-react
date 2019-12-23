@@ -1,0 +1,18 @@
+{
+  "name": "catchup-graphql-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rgripper/catchup-graphql-react.git",
+  "author": "Vladimir <azuresplash@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "client:install": "yarn --cwd packages/client",
+    "client:start": "yarn --cwd packages/client start",
+    "server:install": "yarn --cwd packages/server",
+    "server:start": "yarn --cwd packages/server start",
+    "install": "npm-run-all client:install server:install"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
