@@ -4,6 +4,7 @@ import "./App.css";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import FruitList from "./fruits/FruitList";
+import FruitForm from "./fruits/FruitForm";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000"
@@ -14,6 +15,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <div className="app">
         <FruitList />
+        {/* <FruitForm /> */}
         {/* <header>Place MyAvatar here</header>
         <main>
           <div className="main-grid">

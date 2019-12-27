@@ -6,17 +6,29 @@ import { ApolloServer, gql } from "apollo-server";
 // your data.
 const typeDefs = gql`
   type Fruit {
-    name: String
+    id: String!
+    name: String!
   }
 
   type Query {
-    fruits: [Fruit]
+    fruits: [Fruit!]
+  }
+
+  type Mutation {
+    addFruit(fruit: AddFruitInput!): Fruit!
+  }
+
+  input AddFruitInput {
+    name: String!
   }
 `;
 
 const resolvers = {
   Query: {
     fruits: (parent, args, context) => context.fruitService.getAll()
+  },
+  Mutation: {
+    addFruit: (parent, args, context) => context.fruitService.add({ name: args.name })
   }
 };
 
