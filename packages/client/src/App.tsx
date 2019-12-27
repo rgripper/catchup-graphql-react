@@ -12,18 +12,16 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-          <img style={{ width: "10px", height: "10px" }} src={logo} className="App-logo" alt="logo" />
-          <p>Christmas mode?</p>
-          <FruitList />
-        </header>
-
-        <div className="Grid-main">
-          <div>User list to-do</div>
-          <div>Message list to-do</div>
-        </div>
-        <div>Other stuff</div>
+      <div className="app">
+        <FruitList />
+        {/* <header>Place MyAvatar here</header>
+        <main>
+          <div className="main-grid">
+            <div>Place UserList here</div>
+            <div>Place MessageList here</div>
+          </div>
+          <div className="form-container">Place MessageForm here</div>
+        </main> */}
       </div>
     </ApolloProvider>
   );

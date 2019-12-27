@@ -29,7 +29,7 @@ Run `yarn` in the root folder, it will install both a server and client.
 - `name` - String
 - `avatarUrl` - String | null
 
-> Extra task: Generate `avatarUrl` from `name` using an avatar generator. https://unicornify.pictures/
+> Extra task: Generate `avatarUrl` from `id` using an avatar generator. https://robohash.org/sample_id_123.png
 
 ### Chat
 

@@ -7,9 +7,9 @@
   "license": "MIT",
   "scripts": {
     "client:install": "yarn --cwd packages/client",
-    "client:start": "yarn --cwd packages/client start",
+    "client": "yarn --cwd packages/client start",
     "server:install": "yarn --cwd packages/server",
-    "server:start": "yarn --cwd packages/server start",
+    "server": "yarn --cwd packages/server start",
     "install": "npm-run-all client:install server:install"
   },
   "devDependencies": {
