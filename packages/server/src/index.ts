@@ -15,7 +15,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addFruit(fruit: AddFruitInput!): Fruit!
+    addFruit(input: AddFruitInput!): Fruit!
   }
 
   input AddFruitInput {
@@ -28,7 +28,7 @@ const resolvers = {
     fruits: (parent, args, context) => context.fruitService.getAll()
   },
   Mutation: {
-    addFruit: (parent, args, context) => context.fruitService.add({ name: args.name })
+    addFruit: (parent, args, context) => context.fruitService.add(args.input)
   }
 };
 

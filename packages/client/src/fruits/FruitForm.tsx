@@ -3,13 +3,18 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 
 const FRUIT_FORM = gql`
-  mutation addFruit($name: String!) {
-    addFruit(fruit: { $name })
+  mutation addFruit($input: AddFruitInput!) {
+    addFruit(input: $input) {
+      id
+      name
+    }
   }
 `;
 
 function FruitForm() {
   const [addFruit, { loading, error }] = useMutation(FRUIT_FORM);
+  const [name, setName] = useState("");
+
   if (loading) {
     return <div>Adding...</div>;
   }
@@ -17,13 +22,13 @@ function FruitForm() {
     return <div>Error</div>;
   }
 
-  const [name, setName] = useState("");
   return (
     <form
       onSubmit={() => {
-        const fruit = { name };
-        addFruit({ variables: fruit });
+        const input = { name };
+        const fruit = addFruit({ variables: { input } });
         setName("");
+        //onAdded(fruit);
       }}
     >
       <input placeholder="Fruit name" value={name} onChange={e => setName(e.currentTarget.value)} />

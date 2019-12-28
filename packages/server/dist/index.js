@@ -6,13 +6,13 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
 Object.defineProperty(exports, "__esModule", { value: true });
 var fruit_service_1 = require("./fruit-service");
 var apollo_server_1 = require("apollo-server");
-var typeDefs = apollo_server_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Fruit {\n    id: String!\n    name: String!\n  }\n\n  type Query {\n    fruits: [Fruit!]\n  }\n\n  type Mutation {\n    addFruit(fruit: AddFruitInput!): Fruit!\n  }\n\n  input AddFruitInput {\n    name: String!\n  }\n"], ["\n  type Fruit {\n    id: String!\n    name: String!\n  }\n\n  type Query {\n    fruits: [Fruit!]\n  }\n\n  type Mutation {\n    addFruit(fruit: AddFruitInput!): Fruit!\n  }\n\n  input AddFruitInput {\n    name: String!\n  }\n"])));
+var typeDefs = apollo_server_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Fruit {\n    id: String!\n    name: String!\n  }\n\n  type Query {\n    fruits: [Fruit!]\n  }\n\n  type Mutation {\n    addFruit(input: AddFruitInput!): Fruit!\n  }\n\n  input AddFruitInput {\n    name: String!\n  }\n"], ["\n  type Fruit {\n    id: String!\n    name: String!\n  }\n\n  type Query {\n    fruits: [Fruit!]\n  }\n\n  type Mutation {\n    addFruit(input: AddFruitInput!): Fruit!\n  }\n\n  input AddFruitInput {\n    name: String!\n  }\n"])));
 var resolvers = {
     Query: {
         fruits: function (parent, args, context) { return context.fruitService.getAll(); }
     },
     Mutation: {
-        addFruit: function (parent, args, context) { return context.fruitService.add({ name: args.name }); }
+        addFruit: function (parent, args, context) { return context.fruitService.add(args.input); }
     }
 };
 var server = new apollo_server_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers, context: { fruitService: new fruit_service_1.FruitService() } });

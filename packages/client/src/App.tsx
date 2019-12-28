@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
@@ -15,7 +14,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <div className="app">
         <FruitList />
-        {/* <FruitForm /> */}
+        <FruitForm />
         {/* <header>Place MyAvatar here</header>
         <main>
           <div className="main-grid">
