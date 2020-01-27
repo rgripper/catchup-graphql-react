@@ -117,6 +117,10 @@
         "version": "0c9ea8c2028047f39a3f66752682604f543c08be8806258c3d95c93e75a43255",
         "signature": "0c9ea8c2028047f39a3f66752682604f543c08be8806258c3d95c93e75a43255"
       },
+      "./src/chat-service.ts": {
+        "version": "8f01b644697b188aac66e69d86f09a97e709c35380452831ea286aca287a2314",
+        "signature": "bd944e5de26e4cac410742e722552ae9be096080427c216e1224f23ef516de56"
+      },
       "./src/fruit-service.ts": {
         "version": "7d4914c84eb3fa337e416e7483c737045b180b9d614606e9db29981d0bf1610c",
         "signature": "d0b95b3c0053efdde2d96420d962fd2a91c60302b00115516799e5ea7a3d347c"
@@ -1290,7 +1294,7 @@
         "signature": "44e8bb3a7188456531afeb4ee8c58de39781ca6bdcf10cf7d17dcdc6375832f4"
       },
       "./src/index.ts": {
-        "version": "a5c82b4919ed2c483eec1caa037309e419f7f57c4166d013dcdd924d6919db10",
+        "version": "cd3a2e2a0b959ac7b3b6e6276c17b568916f47f5e0d2e8081da179d004bb28fe",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       }
     },
@@ -1481,6 +1485,12 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./node_modules/typescript/lib/lib.esnext.bigint.d.ts": [
+        "./node_modules/@types/node/fs.d.ts",
+        "./node_modules/@types/node/ts3.2/fs.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./src/chat-service.ts": [
         "./node_modules/@types/node/fs.d.ts",
         "./node_modules/@types/node/ts3.2/fs.d.ts",
         "./node_modules/@types/node/util.d.ts",
@@ -4030,6 +4040,8 @@
       "./src/index.ts": [
         "./src/fruit-service.ts",
         "./node_modules/apollo-server/dist/index.d.ts",
+        "./src/chat-service.ts",
+        "./node_modules/graphql/index.d.ts",
         "./node_modules/@types/node/fs.d.ts",
         "./node_modules/@types/node/ts3.2/fs.d.ts",
         "./node_modules/@types/node/util.d.ts",
@@ -6777,6 +6789,7 @@
       "./node_modules/typescript/lib/lib.es2019.array.d.ts",
       "./node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "./node_modules/typescript/lib/lib.esnext.bigint.d.ts",
+      "./src/chat-service.ts",
       "./src/fruit-service.ts",
       "./node_modules/@types/node/globals.d.ts",
       "./node_modules/@types/node/assert.d.ts",

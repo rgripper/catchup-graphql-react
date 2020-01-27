@@ -11,7 +11,7 @@ export const FRUITS_QUERY = gql`
 `;
 
 function FruitList() {
-  const { loading, error, data, refetch } = useQuery(FRUITS_QUERY);
+  const { loading, error, data } = useQuery(FRUITS_QUERY);
   if (loading) {
     return <div>Loading...</div>;
   }
