@@ -1,8 +1,9 @@
 import { gql } from "apollo-boost";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
+import { FRUITS_QUERY } from "./FruitList";
 
-const FRUIT_FORM = gql`
+const ADD_FRUIT_MUTATION = gql`
   mutation addFruit($input: AddFruitInput!) {
     addFruit(input: $input) {
       id
@@ -12,7 +13,15 @@ const FRUIT_FORM = gql`
 `;
 
 function FruitForm() {
-  const [addFruit, { loading, error }] = useMutation(FRUIT_FORM);
+  const [addFruit, { loading, error }] = useMutation(ADD_FRUIT_MUTATION, {
+    update(cache, { data: { addFruit } }) {
+      const { fruits } = cache.readQuery({ query: FRUITS_QUERY });
+      cache.writeQuery({
+        query: FRUITS_QUERY,
+        data: { fruits: fruits.concat([addFruit]) }
+      });
+    }
+  });
   const [name, setName] = useState("");
 
   if (loading) {
@@ -24,11 +33,10 @@ function FruitForm() {
 
   return (
     <form
-      onSubmit={() => {
+      onSubmit={async () => {
         const input = { name };
-        const fruit = addFruit({ variables: { input } });
+        await addFruit({ variables: { input } });
         setName("");
-        //onAdded(fruit);
       }}
     >
       <input placeholder="Fruit name" value={name} onChange={e => setName(e.currentTarget.value)} />

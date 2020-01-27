@@ -32,7 +32,7 @@ const resolvers = {
   }
 };
 
-const server = new ApolloServer({ typeDefs, resolvers, context: { fruitService: new FruitService() } });
+const server = new ApolloServer({ typeDefs, resolvers, context: { fruitService: new FruitService() }, cors: true });
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {

@@ -15,7 +15,7 @@ var resolvers = {
         addFruit: function (parent, args, context) { return context.fruitService.add(args.input); }
     }
 };
-var server = new apollo_server_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers, context: { fruitService: new fruit_service_1.FruitService() } });
+var server = new apollo_server_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers, context: { fruitService: new fruit_service_1.FruitService() }, cors: true });
 server.listen().then(function (_a) {
     var url = _a.url;
     console.log("\uD83D\uDE80  Server ready at " + url);

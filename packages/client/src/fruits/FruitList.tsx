@@ -1,9 +1,8 @@
 import { gql } from "apollo-boost";
 import React, { useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import FruitForm from "./FruitForm";
 
-const FRUITS_QUERY = gql`
+export const FRUITS_QUERY = gql`
   {
     fruits {
       name
@@ -12,8 +11,7 @@ const FRUITS_QUERY = gql`
 `;
 
 function FruitList() {
-
-  const { loading, error, data } = useQuery(FRUITS_QUERY);
+  const { loading, error, data, refetch } = useQuery(FRUITS_QUERY);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -21,12 +19,10 @@ function FruitList() {
     return <div>Error</div>;
   }
 
-  
-
   return (
     <ul>
       {data.fruits.map(fruit => (
-        <li>{fruit.name}</li>
+        <li key={fruit.name}>{fruit.name}</li>
       ))}
     </ul>
   );
