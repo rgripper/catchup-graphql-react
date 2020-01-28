@@ -8,7 +8,7 @@ var fruit_service_1 = require("./fruit-service");
 var apollo_server_1 = require("apollo-server");
 var chat_service_1 = require("./chat-service");
 var graphql_1 = require("graphql");
-var typeDefs = apollo_server_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    fruits: [Fruit!]!\n    messages: [Message!]!\n    users: [User!]!\n  }\n\n  type Mutation {\n    addFruit(input: AddFruitInput!): Fruit!\n    addUser(name: String!): User\n    addMessage(senderId: ID, text: String!): Message!\n  }\n\n  type Subscription {\n    addedMessage: Message\n    addedUser: User\n  }\n\n  input AddFruitInput {\n    name: String!\n  }\n\n  type Message {\n    id: ID!\n    senderId: ID\n    creationDate: String!\n    text: String!\n  }\n\n  type User {\n    id: ID!\n    name: String!\n    avatarUrl: String!\n  }\n\n  type Fruit {\n    id: ID!\n    name: String!\n  }\n\n  scalar Date\n"], ["\n  type Query {\n    fruits: [Fruit!]!\n    messages: [Message!]!\n    users: [User!]!\n  }\n\n  type Mutation {\n    addFruit(input: AddFruitInput!): Fruit!\n    addUser(name: String!): User\n    addMessage(senderId: ID, text: String!): Message!\n  }\n\n  type Subscription {\n    addedMessage: Message\n    addedUser: User\n  }\n\n  input AddFruitInput {\n    name: String!\n  }\n\n  type Message {\n    id: ID!\n    senderId: ID\n    creationDate: String!\n    text: String!\n  }\n\n  type User {\n    id: ID!\n    name: String!\n    avatarUrl: String!\n  }\n\n  type Fruit {\n    id: ID!\n    name: String!\n  }\n\n  scalar Date\n"])));
+var typeDefs = apollo_server_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    fruits: [Fruit!]!\n    messages: [Message!]!\n    users: [User!]!\n  }\n\n  type Mutation {\n    addFruit(input: AddFruitInput!): Fruit!\n    login(name: String!): User!\n    addMessage(senderId: ID, text: String!): Message!\n  }\n\n  type Subscription {\n    addedMessage: Message\n    addedUser: User\n  }\n\n  input AddFruitInput {\n    name: String!\n  }\n\n  type Message {\n    id: ID!\n    senderId: ID\n    creationDate: String!\n    text: String!\n  }\n\n  type User {\n    id: ID!\n    name: String!\n    avatarUrl: String!\n  }\n\n  type Fruit {\n    id: ID!\n    name: String!\n  }\n\n  scalar Date\n"], ["\n  type Query {\n    fruits: [Fruit!]!\n    messages: [Message!]!\n    users: [User!]!\n  }\n\n  type Mutation {\n    addFruit(input: AddFruitInput!): Fruit!\n    login(name: String!): User!\n    addMessage(senderId: ID, text: String!): Message!\n  }\n\n  type Subscription {\n    addedMessage: Message\n    addedUser: User\n  }\n\n  input AddFruitInput {\n    name: String!\n  }\n\n  type Message {\n    id: ID!\n    senderId: ID\n    creationDate: String!\n    text: String!\n  }\n\n  type User {\n    id: ID!\n    name: String!\n    avatarUrl: String!\n  }\n\n  type Fruit {\n    id: ID!\n    name: String!\n  }\n\n  scalar Date\n"])));
 var pubSub = new apollo_server_1.PubSub();
 var dateType = new graphql_1.GraphQLScalarType({
     name: "Date",
@@ -34,12 +34,13 @@ var resolvers = {
     },
     Mutation: {
         addFruit: function (parent, args, context) { return context.fruitService.add(args.input); },
-        addUser: function (parent, args, context) {
+        login: function (parent, args, context) {
             var addedUser = context.chatService.addUser({ name: args.name });
             console.log("user!", addedUser);
             if (addedUser) {
                 pubSub.publish("addedUser", { addedUser: addedUser });
             }
+            return addedUser;
         },
         addMessage: function (parent, args, context) {
             var addedMessage = context.chatService.addMessage({ senderId: args.senderId, text: args.text });

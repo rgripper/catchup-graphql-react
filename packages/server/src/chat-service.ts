@@ -8,9 +8,9 @@ export class ChatService {
   users = [{ id: uuid(), name: "A wierd grill" }];
 
   addMessage({ senderId, text }) {
-    const message = { id: uuid(), senderId, text, creationDate: new Date() };
-    this.messages.push(message);
-    return message;
+    const newMessage = { id: uuid(), senderId, text, creationDate: new Date() };
+    this.messages.push(newMessage);
+    return newMessage;
   }
 
   getAllMessages() {
@@ -18,13 +18,14 @@ export class ChatService {
   }
 
   addUser({ name }) {
-    if (this.users.some(x => x.name === name)) {
-      return;
+    const existingUser = this.users.find(x => x.name === name);
+    if (existingUser) {
+      return existingUser;
     }
 
-    const user = { id: uuid(), name };
-    this.users.push(user);
-    return user;
+    const newUser = { id: uuid(), name };
+    this.users.push(newUser);
+    return newUser;
   }
 
   getAllUsers() {

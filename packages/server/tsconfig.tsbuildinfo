@@ -118,7 +118,7 @@
         "signature": "0c9ea8c2028047f39a3f66752682604f543c08be8806258c3d95c93e75a43255"
       },
       "./src/chat-service.ts": {
-        "version": "8f01b644697b188aac66e69d86f09a97e709c35380452831ea286aca287a2314",
+        "version": "131181aacd131125312269a650b6228cd67f225757c0acc646c9b1cb7873ed6f",
         "signature": "bd944e5de26e4cac410742e722552ae9be096080427c216e1224f23ef516de56"
       },
       "./src/fruit-service.ts": {
@@ -1294,7 +1294,7 @@
         "signature": "44e8bb3a7188456531afeb4ee8c58de39781ca6bdcf10cf7d17dcdc6375832f4"
       },
       "./src/index.ts": {
-        "version": "cd3a2e2a0b959ac7b3b6e6276c17b568916f47f5e0d2e8081da179d004bb28fe",
+        "version": "a43d7b4a8b3c0e3edbe12188c091e07692b4aa593bad8c7dea8307434e1c433e",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       }
     },

@@ -7,6 +7,7 @@ export const USERS_QUERY = gql`
     users {
       id
       name
+      avatarUrl
     }
   }
 `;
@@ -16,27 +17,30 @@ export const ADDED_USER_SUBSCRIPTION = gql`
     addedUser {
       id
       name
+      avatarUrl
     }
   }
 `;
 
 function UserList() {
   const { loading, error, data, subscribeToMore } = useQuery(USERS_QUERY);
-  useEffect(() => {
-    subscribeToMore({
-      document: ADDED_USER_SUBSCRIPTION,
-      updateQuery: (prev, { subscriptionData }) => {
-        console.log(subscriptionData.data);
-        if (!subscriptionData.data.addedUser) return prev;
-        const addedUser = subscriptionData.data.addedUser;
-        console.log(prev.users, addedUser);
-        return {
-          ...prev,
-          users: [addedUser, ...prev.users]
-        };
-      }
-    });
-  }, [subscribeToMore]);
+  useEffect(
+    () =>
+      subscribeToMore({
+        document: ADDED_USER_SUBSCRIPTION,
+        updateQuery: (prev, { subscriptionData }) => {
+          console.log(subscriptionData.data);
+          if (!subscriptionData.data.addedUser) return prev;
+          const addedUser = subscriptionData.data.addedUser;
+          console.log(prev.users, addedUser);
+          return {
+            ...prev,
+            users: [addedUser, ...prev.users]
+          };
+        }
+      }),
+    [subscribeToMore]
+  );
 
   if (loading) {
     return <div>Loading...</div>;
@@ -48,7 +52,10 @@ function UserList() {
   return (
     <ul>
       {data.users.map(user => (
-        <li key={user.id}>{user.name}</li>
+        <li key={user.id}>
+          <img style={{ width: "40px" }} src={user.avatarUrl} />
+          <span>{user.name}</span>
+        </li>
       ))}
     </ul>
   );

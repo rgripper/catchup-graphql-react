@@ -14,21 +14,22 @@ var ChatService = (function () {
     }
     ChatService.prototype.addMessage = function (_a) {
         var senderId = _a.senderId, text = _a.text;
-        var message = { id: v1_1.default(), senderId: senderId, text: text, creationDate: new Date() };
-        this.messages.push(message);
-        return message;
+        var newMessage = { id: v1_1.default(), senderId: senderId, text: text, creationDate: new Date() };
+        this.messages.push(newMessage);
+        return newMessage;
     };
     ChatService.prototype.getAllMessages = function () {
         return this.messages;
     };
     ChatService.prototype.addUser = function (_a) {
         var name = _a.name;
-        if (this.users.some(function (x) { return x.name === name; })) {
-            return;
+        var existingUser = this.users.find(function (x) { return x.name === name; });
+        if (existingUser) {
+            return existingUser;
         }
-        var user = { id: v1_1.default(), name: name };
-        this.users.push(user);
-        return user;
+        var newUser = { id: v1_1.default(), name: name };
+        this.users.push(newUser);
+        return newUser;
     };
     ChatService.prototype.getAllUsers = function () {
         return this.users;

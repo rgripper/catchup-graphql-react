@@ -26,20 +26,22 @@ export const ADDED_MESSAGE_SUBSCRIPTION = gql`
 
 function MessageList() {
   const { loading, error, data, subscribeToMore } = useQuery(MESSAGES_QUERY);
-  useEffect(() => {
-    subscribeToMore({
-      document: ADDED_MESSAGE_SUBSCRIPTION,
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data.addedMessage) return prev;
-        const addedMessage = subscriptionData.data.addedMessage;
+  useEffect(
+    () =>
+      subscribeToMore({
+        document: ADDED_MESSAGE_SUBSCRIPTION,
+        updateQuery: (prev, { subscriptionData }) => {
+          if (!subscriptionData.data.addedMessage) return prev;
+          const addedMessage = subscriptionData.data.addedMessage;
 
-        return {
-          ...prev,
-          messages: [addedMessage, ...prev.entry.messages]
-        };
-      }
-    });
-  }, [subscribeToMore]);
+          return {
+            ...prev,
+            messages: [addedMessage, ...prev.entry.messages]
+          };
+        }
+      }),
+    [subscribeToMore]
+  );
 
   if (loading) {
     return <div>Loading...</div>;

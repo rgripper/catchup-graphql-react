@@ -15,7 +15,7 @@ const typeDefs = gql`
 
   type Mutation {
     addFruit(input: AddFruitInput!): Fruit!
-    addUser(name: String!): User
+    login(name: String!): User!
     addMessage(senderId: ID, text: String!): Message!
   }
 
@@ -76,12 +76,13 @@ const resolvers = {
   },
   Mutation: {
     addFruit: (parent, args, context) => context.fruitService.add(args.input),
-    addUser: (parent, args, context) => {
+    login: (parent, args, context) => {
       const addedUser = context.chatService.addUser({ name: args.name });
       console.log("user!", addedUser);
       if (addedUser) {
         pubSub.publish("addedUser", { addedUser });
       }
+      return addedUser;
     },
     addMessage: (parent, args, context) => {
       const addedMessage = context.chatService.addMessage({ senderId: args.senderId, text: args.text });
