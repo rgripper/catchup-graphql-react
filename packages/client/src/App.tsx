@@ -15,9 +15,9 @@ const client = new ApolloClient({
 function Chat({ user }) {
   return (
     <>
-      <header>
+      <header className={"my-profile"}>
+        <img src={user.avatarUrl} />
         {user.name}
-        <img style={{ width: "40px" }} src={user.avatarUrl} />
       </header>
       <main>
         <div className="main-grid">

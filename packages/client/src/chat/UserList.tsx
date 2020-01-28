@@ -50,7 +50,7 @@ function UserList() {
   }
 
   return (
-    <ul>
+    <ul className="user-list">
       {data.users.map(user => (
         <li key={user.id}>
           <img style={{ width: "40px" }} src={user.avatarUrl} />

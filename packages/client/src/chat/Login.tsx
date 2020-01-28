@@ -22,6 +22,7 @@ function Login({ onSuccess }) {
 
   return (
     <form
+      className="login"
       onSubmit={async e => {
         e.preventDefault();
         const { data, errors } = await login({ variables: { name } });
