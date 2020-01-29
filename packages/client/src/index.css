@@ -42,6 +42,8 @@ li > img {
   align-items: center;
   font-size: 1.25rem;
   margin: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ccc;
 }
 
 .my-profile > img {

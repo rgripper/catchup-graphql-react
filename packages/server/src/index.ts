@@ -20,8 +20,8 @@ const typeDefs = gql`
   }
 
   type Subscription {
-    addedMessage: Message
-    addedUser: User
+    addedMessage: Message!
+    addedUser: User!
   }
 
   input AddFruitInput {

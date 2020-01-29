@@ -1,7 +1,7 @@
-import { gql } from "apollo-boost";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { FRUITS_QUERY } from "./FruitList";
+import gql from "graphql-tag";
 
 const ADD_FRUIT_MUTATION = gql`
   mutation addFruit($input: AddFruitInput!) {

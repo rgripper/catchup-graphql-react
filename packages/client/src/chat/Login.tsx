@@ -1,6 +1,6 @@
-import { gql } from "apollo-boost";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 const LOGIN_MUTATION = gql`
   mutation Login($name: String!) {

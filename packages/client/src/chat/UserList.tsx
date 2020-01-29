@@ -1,6 +1,6 @@
-import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import React, { useEffect } from "react";
+import gql from "graphql-tag";
 
 export const USERS_QUERY = gql`
   {
@@ -51,12 +51,14 @@ function UserList() {
 
   return (
     <ul className="user-list">
-      {data.users.map(user => (
-        <li key={user.id}>
-          <img style={{ width: "40px" }} src={user.avatarUrl} />
-          <span>{user.name}</span>
-        </li>
-      ))}
+      {[...data.users]
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(user => (
+          <li key={user.id}>
+            <img style={{ width: "40px" }} src={user.avatarUrl} alt="Avatar" />
+            <span>{user.name}</span>
+          </li>
+        ))}
     </ul>
   );
 }

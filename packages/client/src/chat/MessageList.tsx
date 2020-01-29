@@ -1,6 +1,6 @@
-import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import React, { useEffect } from "react";
+import gql from "graphql-tag";
 
 export const MESSAGES_QUERY = gql`
   {
