@@ -16,10 +16,6 @@ function Login({ onSuccess }) {
   const [login, { loading, error }] = useMutation(LOGIN_MUTATION);
   const [name, setName] = useState("");
 
-  if (error) {
-    return <div>Error</div>;
-  }
-
   return (
     <form
       className="login"
@@ -33,7 +29,7 @@ function Login({ onSuccess }) {
     >
       <fieldset disabled={loading}>
         <input placeholder="Name" value={name} onChange={e => setName(e.currentTarget.value)} />
-        {error && <div>{error.message}</div>}
+        {error && <div>Error</div>}
         <div>
           <button>Login</button>
         </div>

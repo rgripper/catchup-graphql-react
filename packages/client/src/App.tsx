@@ -12,6 +12,7 @@ import { getMainDefinition } from "apollo-utilities";
 import { HttpLink } from "apollo-link-http";
 import { split } from "apollo-link";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import MessageForm from "./chat/MessageForm";
 
 function createLink(httpUrl: string, wsUrl: string) {
   const httpLink = new HttpLink({
@@ -57,7 +58,9 @@ function Chat({ user }) {
             <MessageList />
           </div>
         </div>
-        <div className="form-container">Place MessageForm here</div>
+        <div className="form-container">
+          <MessageForm />
+        </div>
       </main>
     </>
   );
