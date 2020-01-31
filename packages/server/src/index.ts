@@ -89,6 +89,8 @@ const resolvers = {
       if (addedMessage) {
         pubSub.publish("addedMessage", { addedMessage });
       }
+
+      return addedMessage;
     }
   },
   User: {

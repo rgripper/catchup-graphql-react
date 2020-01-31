@@ -47,6 +47,7 @@ var resolvers = {
             if (addedMessage) {
                 pubSub.publish("addedMessage", { addedMessage: addedMessage });
             }
+            return addedMessage;
         }
     },
     User: {

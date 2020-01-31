@@ -36,7 +36,7 @@ function MessageList() {
 
           return {
             ...prev,
-            messages: [addedMessage, ...prev.entry.messages]
+            messages: [addedMessage, ...prev.messages]
           };
         }
       }),
