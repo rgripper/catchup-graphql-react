@@ -31,7 +31,7 @@ const typeDefs = gql`
   type Message {
     id: ID!
     senderId: ID
-    creationDate: String!
+    creationDate: Date!
     text: String!
   }
 
@@ -54,15 +54,15 @@ const pubSub = new PubSub();
 const dateType = new GraphQLScalarType({
   name: "Date",
   description: "Date",
-  serialize(value: Date): string {
-    return value.toISOString();
+  serialize(value: Date): number {
+    return value.getTime();
   },
-  parseValue(value: string): Date {
+  parseValue(value: number): Date {
     return new Date(value);
   },
   parseLiteral(ast) {
-    if (ast.kind === Kind.STRING) {
-      return ast.value; // ast value is always in string format
+    if (ast.kind === Kind.INT) {
+      return ast.value;
     }
     return null;
   }

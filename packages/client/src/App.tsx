@@ -11,7 +11,7 @@ import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 import { HttpLink } from "apollo-link-http";
 import { split } from "apollo-link";
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { InMemoryCache } from "apollo-cache-inmemory";
 
 function createLink(httpUrl: string, wsUrl: string) {
   const httpLink = new HttpLink({
