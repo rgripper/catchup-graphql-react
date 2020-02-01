@@ -121,10 +121,6 @@
         "version": "131181aacd131125312269a650b6228cd67f225757c0acc646c9b1cb7873ed6f",
         "signature": "bd944e5de26e4cac410742e722552ae9be096080427c216e1224f23ef516de56"
       },
-      "./src/fruit-service.ts": {
-        "version": "7d4914c84eb3fa337e416e7483c737045b180b9d614606e9db29981d0bf1610c",
-        "signature": "d0b95b3c0053efdde2d96420d962fd2a91c60302b00115516799e5ea7a3d347c"
-      },
       "./node_modules/@types/node/globals.d.ts": {
         "version": "05c42320698cb6eb4052d68ef35a0f3b88291b9275f13e9a188b96119844c5b6",
         "signature": "05c42320698cb6eb4052d68ef35a0f3b88291b9275f13e9a188b96119844c5b6"
@@ -1294,7 +1290,7 @@
         "signature": "44e8bb3a7188456531afeb4ee8c58de39781ca6bdcf10cf7d17dcdc6375832f4"
       },
       "./src/index.ts": {
-        "version": "071138177cfc0efde94e21556fadaae49bdcce8ed472bdf6ff27547754a02a9a",
+        "version": "d957021caef6a8be7ae8c4b81cbd5baf4267fea0b38e9deb3b1485253aacc5d9",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       }
     },
@@ -1491,12 +1487,6 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./src/chat-service.ts": [
-        "./node_modules/@types/node/fs.d.ts",
-        "./node_modules/@types/node/ts3.2/fs.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "./src/fruit-service.ts": [
         "./node_modules/@types/node/fs.d.ts",
         "./node_modules/@types/node/ts3.2/fs.d.ts",
         "./node_modules/@types/node/util.d.ts",
@@ -4038,10 +4028,8 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./src/index.ts": [
-        "./src/fruit-service.ts",
         "./node_modules/apollo-server/dist/index.d.ts",
         "./src/chat-service.ts",
-        "./node_modules/graphql/index.d.ts",
         "./node_modules/@types/node/fs.d.ts",
         "./node_modules/@types/node/ts3.2/fs.d.ts",
         "./node_modules/@types/node/util.d.ts",
@@ -6790,7 +6778,6 @@
       "./node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "./node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "./src/chat-service.ts",
-      "./src/fruit-service.ts",
       "./node_modules/@types/node/globals.d.ts",
       "./node_modules/@types/node/assert.d.ts",
       "./node_modules/@types/node/async_hooks.d.ts",
