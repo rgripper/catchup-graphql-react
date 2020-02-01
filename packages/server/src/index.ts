@@ -6,19 +6,48 @@ import { ChatService } from "./chat-service";
 // your data.
 const typeDefs = gql`
   type Query {
-    fruits: [Fruit!]!
+    users: [User!]!
+  }
+  type Mutation {
+    login(name: String!): User!
+  }
+  type Subscription {
+    addedUser: User!
   }
 
-  type Fruit {
+  type User {
     id: ID!
     name: String!
+    avatarUrl: String!
   }
+
 `;
 
 const pubSub = new PubSub();
 
 const resolvers = {
   Query: {
+    users: (parent, args, context) => context.chatService.getAllUsers()
+  },
+  Mutation: {
+    login: (parent, args, context) => {
+      const addedUser = context.chatService.addUser({ name: args.name });
+      console.log("user!", addedUser);
+      if (addedUser) {
+        pubSub.publish("addedUser", { addedUser });
+      }
+      return addedUser;
+    },
+  },
+  User: {
+    avatarUrl(user) {
+      return `https://robohash.org/${user.name}.png`;
+    }
+  },
+  Subscription: {
+    addedUser: {
+      subscribe: () => pubSub.asyncIterator("addedUser")
+    },
   }
 };
 
