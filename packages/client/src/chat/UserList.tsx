@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/react-hooks";
 import React, { useEffect } from "react";
 import gql from "graphql-tag";
+import Stub from "../Stub";
 
 export const USERS_QUERY = gql`
   {
@@ -26,13 +27,13 @@ function UserList() {
   const { loading, error, data, subscribeToMore } = useQuery(USERS_QUERY);
   useEffect(
     () =>
+      ADDED_USER_SUBSCRIPTION &&
       subscribeToMore({
         document: ADDED_USER_SUBSCRIPTION,
         updateQuery: (prev, { subscriptionData }) => {
-          console.log(subscriptionData.data);
           if (!subscriptionData.data.addedUser) return prev;
           const addedUser = subscriptionData.data.addedUser;
-          console.log(prev.users, addedUser);
+
           return {
             ...prev,
             users: [addedUser, ...prev.users]
@@ -63,4 +64,4 @@ function UserList() {
   );
 }
 
-export default UserList;
+export default USERS_QUERY ? UserList : Stub("USERS_QUERY is not set");

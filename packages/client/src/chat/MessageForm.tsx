@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import Stub from "../Stub";
 
 const ADD_MESSAGE_MUTATION = gql`
   mutation AddMessage($text: String!) {
@@ -32,4 +33,4 @@ function MessageForm() {
   );
 }
 
-export default MessageForm;
+export default ADD_MESSAGE_MUTATION ? MessageForm : Stub("ADD_MESSAGE_MUTATION is not set");

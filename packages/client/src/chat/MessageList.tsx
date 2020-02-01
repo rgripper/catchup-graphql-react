@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/react-hooks";
 import React, { useEffect } from "react";
 import gql from "graphql-tag";
+import Stub from "../Stub";
 
 export const MESSAGES_QUERY = gql`
   {
@@ -28,6 +29,7 @@ function MessageList() {
   const { loading, error, data, subscribeToMore } = useQuery(MESSAGES_QUERY);
   useEffect(
     () =>
+      ADDED_MESSAGE_SUBSCRIPTION &&
       subscribeToMore({
         document: ADDED_MESSAGE_SUBSCRIPTION,
         updateQuery: (prev, { subscriptionData }) => {
@@ -59,4 +61,4 @@ function MessageList() {
   );
 }
 
-export default MessageList;
+export default MESSAGES_QUERY ? MessageList : Stub("MESSAGES_QUERY is not set");

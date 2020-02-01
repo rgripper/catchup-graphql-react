@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import Stub from "../Stub";
 
 const LOGIN_MUTATION = gql`
   mutation Login($name: String!) {
@@ -38,4 +39,4 @@ function Login({ onSuccess }) {
   );
 }
 
-export default Login;
+export default LOGIN_MUTATION ? Login : Stub("LOGIN_MUTATION is not set");
