@@ -25,10 +25,8 @@ function MessageForm() {
     >
       <fieldset disabled={loading}>
         <input placeholder="Message" value={text} onChange={e => setText(e.currentTarget.value)} />
+        <button>Send</button>
         {error && <div>Error</div>}
-        <div>
-          <button>Send</button>
-        </div>
       </fieldset>
     </form>
   );

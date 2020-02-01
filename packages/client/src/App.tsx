@@ -71,9 +71,9 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("user", JSON.stringify(user));
     } else {
-      const userJson = localStorage.getItem("user");
+      const userJson = sessionStorage.getItem("user");
       if (userJson) {
         setUser(JSON.parse(userJson));
       }
