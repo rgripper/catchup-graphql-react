@@ -6,6 +6,7 @@ import { ChatService } from "./chat-service";
 // your data.
 const typeDefs = gql`
   type Query {
+    users: [User!]!
   }
   type Mutation {
     login(name: String!): User!
@@ -24,8 +25,7 @@ const typeDefs = gql`
 const pubSub = new PubSub();
 
 const resolvers = {
-  Query: {
-  },
+  Query: {},
   Mutation: {
     login: (parent, args, context) => {
       const addedUser = context.chatService.addUser({ name: args.name });

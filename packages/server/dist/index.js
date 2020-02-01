@@ -4,6 +4,7 @@ const apollo_server_1 = require("apollo-server");
 const chat_service_1 = require("./chat-service");
 const typeDefs = apollo_server_1.gql `
   type Query {
+    users: [User!]!
   }
   type Mutation {
     login(name: String!): User!
