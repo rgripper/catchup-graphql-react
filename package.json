@@ -6,10 +6,10 @@
   "author": "Vladimir <azuresplash@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "client:install": "yarn --cwd packages/client",
-    "client": "yarn --cwd packages/client start",
-    "server:install": "yarn --cwd packages/server",
-    "server": "yarn --cwd packages/server start",
+    "client:install": "cd packages/client && npm install",
+    "client": "npm --prefix packages/client start",
+    "server:install": "cd packages/server && npm install",
+    "server": "npm --prefix packages/server start",
     "install": "npm-run-all client:install server:install"
   },
   "devDependencies": {

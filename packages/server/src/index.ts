@@ -20,7 +20,6 @@ const typeDefs = gql`
     name: String!
     avatarUrl: String!
   }
-
 `;
 
 const pubSub = new PubSub();
@@ -37,7 +36,7 @@ const resolvers = {
         pubSub.publish("addedUser", { addedUser });
       }
       return addedUser;
-    },
+    }
   },
   User: {
     avatarUrl(user) {
@@ -47,7 +46,7 @@ const resolvers = {
   Subscription: {
     addedUser: {
       subscribe: () => pubSub.asyncIterator("addedUser")
-    },
+    }
   }
 };
 
