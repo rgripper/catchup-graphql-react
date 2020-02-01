@@ -3,45 +3,28 @@ import React, { useEffect } from "react";
 import gql from "graphql-tag";
 import Stub from "../Stub";
 
-export const USERS_QUERY = gql`
-  {
-    users {
-      id
-      name
-      avatarUrl
-    }
-  }
-`;
+export const USERS_QUERY = null;
 
-export const ADDED_USER_SUBSCRIPTION = gql`
-  subscription {
-    addedUser {
-      id
-      name
-      avatarUrl
-    }
-  }
-`;
+export const ADDED_USER_SUBSCRIPTION = null;
 
 function UserList() {
   const { loading, error, data, subscribeToMore } = useQuery(USERS_QUERY);
-  useEffect(
-    () =>
-      ADDED_USER_SUBSCRIPTION &&
-      subscribeToMore({
-        document: ADDED_USER_SUBSCRIPTION,
-        updateQuery: (prev, { subscriptionData }) => {
-          if (!subscriptionData.data.addedUser) return prev;
-          const addedUser = subscriptionData.data.addedUser;
+  // useEffect(
+  //   () =>
+  //     subscribeToMore({
+  //       document: ADDED_USER_SUBSCRIPTION,
+  //       updateQuery: (prev, { subscriptionData }) => {
+  //         if (!subscriptionData.data.addedUser) return prev;
+  //         const addedUser = subscriptionData.data.addedUser;
 
-          return {
-            ...prev,
-            users: [addedUser, ...prev.users]
-          };
-        }
-      }),
-    [subscribeToMore]
-  );
+  //         return {
+  //           ...prev,
+  //           users: [addedUser, ...prev.users]
+  //         };
+  //       }
+  //     }),
+  //   [subscribeToMore]
+  // );
 
   if (loading) {
     return <div>Loading...</div>;

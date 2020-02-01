@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from "@apollo/react-hooks";
-import FruitList from "./fruits/FruitList";
-import FruitForm from "./fruits/FruitForm";
 import UserList from "./chat/UserList";
 import MessageList from "./chat/MessageList";
 import Login from "./chat/Login";

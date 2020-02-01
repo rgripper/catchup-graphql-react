@@ -3,15 +3,7 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import Stub from "../Stub";
 
-const LOGIN_MUTATION = gql`
-  mutation Login($name: String!) {
-    login(name: $name) {
-      id
-      name
-      avatarUrl
-    }
-  }
-`;
+const LOGIN_MUTATION = null;
 
 function Login({ onSuccess }) {
   const [login, { loading, error }] = useMutation(LOGIN_MUTATION);

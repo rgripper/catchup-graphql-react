@@ -4,16 +4,22 @@ const Stub = (message: string) => () => (
   <div
     style={{
       fontSize: "32px",
-      border: "1px solid #c77",
       color: "#c77",
-      margin: "16px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      padding: "16px",
       height: "100%"
     }}
   >
-    {message}
+    <div
+      style={{
+        border: "1px solid #c77",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%"
+      }}
+    >
+      {message}
+    </div>
   </div>
 );
 

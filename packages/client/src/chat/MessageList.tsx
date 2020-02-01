@@ -3,47 +3,28 @@ import React, { useEffect } from "react";
 import gql from "graphql-tag";
 import Stub from "../Stub";
 
-export const MESSAGES_QUERY = gql`
-  {
-    messages {
-      id
-      senderId
-      text
-      creationDate
-    }
-  }
-`;
+export const MESSAGES_QUERY = null;
 
-export const ADDED_MESSAGE_SUBSCRIPTION = gql`
-  subscription {
-    addedMessage {
-      id
-      senderId
-      text
-      creationDate
-    }
-  }
-`;
+export const ADDED_MESSAGE_SUBSCRIPTION = null;
 
 function MessageList() {
   const { loading, error, data, subscribeToMore } = useQuery(MESSAGES_QUERY);
-  useEffect(
-    () =>
-      ADDED_MESSAGE_SUBSCRIPTION &&
-      subscribeToMore({
-        document: ADDED_MESSAGE_SUBSCRIPTION,
-        updateQuery: (prev, { subscriptionData }) => {
-          if (!subscriptionData.data.addedMessage) return prev;
-          const addedMessage = subscriptionData.data.addedMessage;
+  // useEffect(
+  //   () =>
+  //     subscribeToMore({
+  //       document: ADDED_MESSAGE_SUBSCRIPTION,
+  //       updateQuery: (prev, { subscriptionData }) => {
+  //         if (!subscriptionData.data.addedMessage) return prev;
+  //         const addedMessage = subscriptionData.data.addedMessage;
 
-          return {
-            ...prev,
-            messages: [addedMessage, ...prev.messages]
-          };
-        }
-      }),
-    [subscribeToMore]
-  );
+  //         return {
+  //           ...prev,
+  //           messages: [addedMessage, ...prev.messages]
+  //         };
+  //       }
+  //     }),
+  //   [subscribeToMore]
+  // );
 
   if (loading) {
     return <div>Loading...</div>;

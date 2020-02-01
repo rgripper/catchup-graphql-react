@@ -3,13 +3,7 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import Stub from "../Stub";
 
-const ADD_MESSAGE_MUTATION = gql`
-  mutation AddMessage($text: String!) {
-    addMessage(text: $text) {
-      id
-    }
-  }
-`;
+const ADD_MESSAGE_MUTATION = null;
 
 function MessageForm() {
   const [addMessage, { loading, error }] = useMutation(ADD_MESSAGE_MUTATION);
