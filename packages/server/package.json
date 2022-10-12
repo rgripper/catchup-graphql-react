@@ -7,7 +7,7 @@
     "start": "npm-run-all --parallel compile-watch dist-watch"
   },
   "dependencies": {
-    "apollo-server": "^2.14.2",
+    "apollo-server": "^2.25.4",
     "concurrently": "^5.0.2",
     "graphql": "^14.5.8"
   },
